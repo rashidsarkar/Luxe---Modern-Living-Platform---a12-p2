@@ -59,8 +59,8 @@ function Banar() {
           </Swiper>
         </div>
 
-        <div>
-          <h1 className="text-5xl">
+        <div className="">
+          <h1 className="text-5xl lg:w-[695px] lg:h-[100px]">
             <TextScramble text=" Find Your Ideal Home with Us" />
           </h1>
 

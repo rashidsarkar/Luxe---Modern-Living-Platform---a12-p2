@@ -1,15 +1,16 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
+import BannerDecpt from "../../../TextEffectComponents/BannerDecpti/BannerDecpt";
 
 function AboutBuilding() {
   return (
     <div className="max-w-7xl">
-      <div className="relative z-50 flex items-center justify-center overflow-hidden bg-white max-w-7xl n">
+      <div className="relative z-20 flex items-center justify-center overflow-hidden bg-white max-w-7xl n">
         <div className="relative h-full px-4 pb-20 mx-auto md:pb-10 sm:max-w-xl md:max-w-full md:px-24 lg:max-w-screen-xl lg:px-8">
           <div className="flex flex-col items-center justify-between py-16 lg:flex-row">
             <div className="relative">
-              <div className="relative z-40 lg:max-w-xl lg:pr-5">
-                <h2 className="max-w-lg mb-6 text-5xl font-light leading-snug tracking-tight text-g1 sm:text-7xl sm:leading-snug">
+              <div className="relative z-40 lg:max-w-xl lg:pr-5 lg:h-[500px] lg:w-[480px] ">
+                <h2 className="max-w-lg mb-6 text-5xl lg:h-[200px] font-light leading-snug tracking-tight text-g1 sm:text-7xl sm:leading-snug">
                   <TypeAnimation
                     sequence={[
                       "Experience Modern Luxury Living!",
@@ -30,13 +31,16 @@ function AboutBuilding() {
                     Exceptional
                   </span> */}
                 </h2>
-                <p className="text-base text-gray-700">
-                  Explore our contemporary building designed to elevate your
+
+                <span className="text-gray-700">
+                  <BannerDecpt
+                    text={`Explore our contemporary building designed to elevate your
                   living experience. With state-of-the-art facilities and
                   meticulously crafted interiors, our rooms offer comfort and
                   style in every detail. Discover a new standard of living with
-                  us.
-                </p>
+                  us.`}
+                  ></BannerDecpt>
+                </span>
               </div>
             </div>
             <div className="relative hidden lg:ml-32 lg:block lg:w-1/2">
@@ -63,9 +67,7 @@ function AboutBuilding() {
             </div>
           </div>
         </div>
-        <div className="absolute z-40 hidden text-9xl varien top-6 left-1/4 text-g/10 ">
-          About Us
-        </div>
+
         <div className="absolute z-0 -bottom-24 left-10 opacity-10">
           <svg
             width="800px"
