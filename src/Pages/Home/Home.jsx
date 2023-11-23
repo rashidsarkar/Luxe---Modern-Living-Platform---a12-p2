@@ -12,7 +12,9 @@ import BannerSlider from "../../Components/Home/BannerSlider/BannerSlider";
 function Home() {
   return (
     <div className="min-h-screen">
-      <Banar></Banar>
+      <div className="max-w-7xl">
+        <Banar></Banar>
+      </div>
       {/* <BannerSlider /> */}
       <SectionDividerWithText
         title="Featured Section"
