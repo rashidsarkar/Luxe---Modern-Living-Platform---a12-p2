@@ -9,6 +9,7 @@ import useAuthProvider from "../../FireBase/useAuthProvider";
 import BannerSlider from "../../Components/Home/BannerSlider/BannerSlider";
 import SectionTitle from "../../TextEffectComponents/BannerDecpt/SectionTitle/SectionTitle";
 import SectionHeading from "../../Components/SectionHeading/SectionHeading";
+import AboutBuilding from "./AboutBuilding/AboutBuilding";
 // import useAxiosInstance from "../../AxiosAPI/useAxiosInstance";
 
 function Home() {
@@ -19,16 +20,7 @@ function Home() {
       </div>
       {/* <BannerSlider /> */}
       <SectionHeading>about the building</SectionHeading>
-
-      <div className="grid grid-cols-1 p-4 md:grid-cols-3 md:gap-5">
-        {/* {data.map((item) => (
-          <FeatureSection feature={item} key={item._id}></FeatureSection>
-        ))} */}
-        <FeatureSection></FeatureSection>
-        <FeatureSection></FeatureSection>
-        <FeatureSection></FeatureSection>
-      </div>
-      <FreqQusSection></FreqQusSection>
+      <AboutBuilding></AboutBuilding>
     </div>
   );
 }
