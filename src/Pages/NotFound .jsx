@@ -1,29 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
-  const styleBg = {
-    backgroundImage: "url(https://i.ibb.co/dkRgR86/cool-background-1.png)",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-  };
-
   return (
-    <div className="relative z-10" style={styleBg}>
-      <div className="flex flex-col items-center justify-center min-h-screen text-gray-700 bg-white bg-opacity-90">
-        <div className="text-6xl font-extrabold">404</div>
-        <div className="text-2xl font-semibold">Oops! Page not found.</div>
-        <p className="mt-4 text-lg">
-          The page you are looking for might have been removed or does not
-          exist.
-        </p>
-        <a
-          href="/"
-          className="text-#252D41 hover:underline mt-4 text-lg font-semibold"
-        >
-          Go back to the homepage
-        </a>
-      </div>
+    <div className="flex flex-col items-center justify-center min-h-screen text-white bg-gradient-to-r from-blue-400 to-purple-500">
+      <h1 className="mb-4 text-6xl font-extrabold">404</h1>
+      <p className="mb-8 text-2xl">Page not found</p>
+      <Link
+        to="/"
+        className="px-4 py-2 text-lg text-white transition duration-300 ease-in-out transform bg-blue-500 rounded-full hover:bg-blue-600 hover:scale-105"
+      >
+        Go back home
+      </Link>
     </div>
   );
 };
