@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Banar from "./Banar/Banar";
 import FeatureSection from "./Feature/FeatureSection";
-import axiosInstance from "../../AxiosAPI/axiosInstance";
+
 import CustomLoading from "../../Components/CustomLoading";
 import FreqQusSection from "./FreqQusSection/FreqQusSection";
 import SectionDividerWithText from "../../Components/SectionDividerWithText";
@@ -15,7 +15,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import FindUs from "./FindUs/FindUs";
-// import useAxiosInstance from "../../AxiosAPI/useAxiosInstance";
+
 AOS.init();
 function Home() {
   useEffect(() => {

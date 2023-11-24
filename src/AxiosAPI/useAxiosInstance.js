@@ -3,7 +3,7 @@ import { useEffect } from "react"; // Import useEffect from React
 import { useNavigate } from "react-router-dom"; // Import useNavigate from the appropriate package
 import useAuthProvider from "../FireBase/useAuthProvider";
 
-const axiosInstance = axios.create({
+const axiosInstanceSecure = axios.create({
   baseURL: "http://localhost:5000", // Your API base URL
   // baseURL: "http://localhost:5000", //> Your API base URL
   withCredentials: true,
@@ -14,7 +14,7 @@ function useAxiosInstance() {
   const { logOut } = useAuthProvider();
 
   useEffect(() => {
-    axiosInstance.interceptors.response.use(
+    axiosInstanceSecure.interceptors.response.use(
       (res) => {
         return res;
       },
@@ -32,7 +32,7 @@ function useAxiosInstance() {
     );
   }, [logOut, navigate]);
 
-  return axiosInstance; // Return the configured axiosInstance
+  return axiosInstanceSecure; // Return the configured axiosInstance
 }
 
 export default useAxiosInstance; // Export the function

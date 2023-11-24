@@ -6,7 +6,7 @@ import SignUp from "../Pages/Account/SignUp";
 
 import NotFound from "../Pages/NotFound ";
 import Home from "../Pages/Home/Home";
-import About from "../Components/About";
+// import About from "../Components/About";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Apartment from "../Pages/Apartment/Apartment";
 
@@ -24,14 +24,14 @@ const router = createBrowserRouter([
         path: "/apartment",
         element: <Apartment />,
       },
-      {
-        path: "/about",
-        element: (
-          <PrivateRoute>
-            <About></About>,
-          </PrivateRoute>
-        ),
-      },
+      // {
+      //   path: "/about",
+      //   element: (
+      //     <PrivateRoute>
+      //       <About></About>,
+      //     </PrivateRoute>
+      //   ),
+      // },
       {
         path: "/Login",
         element: <Login></Login>,

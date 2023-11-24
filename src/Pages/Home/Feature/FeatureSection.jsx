@@ -23,21 +23,38 @@ function FeatureSection({ feature }) {
       "max-glare": 0.5,
     });
   }, []);
+  let cardStyle = {
+    backgroundImage: `url(https://i.ibb.co/0fdj1Mh/pexels-photo-110473.webp)`,
+  };
 
   return (
     <>
-      {/* <div className="mx-4 md:mx-0 cards-container">
+      <div className="mx-4 md:mx-0 cards-container">
         <div className="m-2 mx-auto carda lg:m-7 md:m-3 ">
-          <div style={cardStyle} className="card-image quiz-image"></div>
-          <div className="card-text">
-            <span className="date">{`this is date`}</span>
-            <h2>{`this is title`}</h2>
-            <p>{`this is description this is description this is description this is description this is description this is description  `}</p>
-            <button className="btn btn-primary">Test</button>
+          <div style={cardStyle} className="card-image quiz-image">
+            {/* <LazyLoadImage
+              className="w-full"
+              effect="blur"
+              wrapperProps={{
+                // If you need to, you can tweak the effect transition using the wrapper style.
+                style: { transitionDelay: "1s" },
+              }}
+              src="https://i.ibb.co/0fdj1Mh/pexels-photo-110473.webp"
+            /> */}
           </div>
+          <div className="card-text">
+            <span className="date">{`Apartment no`}</span>
+            <h2>{`this is title Block name`}</h2>
+
+            <div className="flex justify-around">
+              <p>Rent : $ 50025</p>
+              <p>flore no : 682</p>
+            </div>
+          </div>
+          <button className="w-9/12 mx-auto btn btn-primary">Agreement</button>
         </div>
-      </div> */}
-      <div className="shadow-xl card cardaaa bg-base-100">
+      </div>
+      {/* <div className="shadow-xl card cardaaa bg-base-100">
         <figure>
           <LazyLoadImage
             effect="blur"
@@ -55,7 +72,7 @@ function FeatureSection({ feature }) {
             <button className="btn btn-primary">Agreement</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
