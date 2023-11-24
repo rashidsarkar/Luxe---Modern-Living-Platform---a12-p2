@@ -6,9 +6,11 @@ import "./FeatureSection.css";
 import useAuth from "../../../hooks/useAuth";
 
 import useCreateAgreement from "../../../API/createAgreement/useCreateAgreement";
+import { useNavigate } from "react-router-dom";
 
 function FeatureSection({ room }) {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   // console.log(user);
   const { floorNo, blockName, apartmentNo, rent, image } = room || {};
@@ -52,13 +54,14 @@ function FeatureSection({ room }) {
       agreementReqEmail: userEmail,
       Status: "pending",
     };
+
     try {
       await createAgreement(agreementInfo);
     } catch (error) {
       console.log(error);
     }
 
-    console.log(agreementInfo);
+    // console.log(agreementInfo);
   };
 
   return (
@@ -77,14 +80,16 @@ function FeatureSection({ room }) {
           </div>
           <button
             onClick={() =>
-              handleAgreement(
-                floorNo,
-                blockName,
-                apartmentNo,
-                rent,
-                user.displayName,
-                user.email
-              )
+              user
+                ? handleAgreement(
+                    floorNo,
+                    blockName,
+                    apartmentNo,
+                    rent,
+                    user.displayName,
+                    user.email
+                  )
+                : navigate("/login")
             }
             className="w-9/12 mx-auto btn btn-primary"
           >
