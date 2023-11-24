@@ -11,7 +11,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Apartment from "../Pages/Apartment/Apartment";
 import Maindashbord from "../Dashboard/Maindashbord/Maindashbord";
 import UserProfile from "../Dashboard/UserProfile/UserProfile";
-import UserDashbord from "../Dashboard/UserProfile/UserDashbord";
+import UserAnnouncements from "../Dashboard/UserProfile/UserAnnouncements";
 
 const router = createBrowserRouter([
   {
@@ -56,8 +56,8 @@ const router = createBrowserRouter([
         element: <UserProfile />,
       },
       {
-        path: "userDashbord",
-        element: <UserDashbord />,
+        path: "UserAnnouncements",
+        element: <UserAnnouncements />,
       },
     ],
   },

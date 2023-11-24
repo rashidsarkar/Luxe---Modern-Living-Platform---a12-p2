@@ -30,7 +30,7 @@ function MainDashboard() {
       </li>
       <li>
         <NavLink
-          to="/dashboard/userDashbord"
+          to="/dashboard/UserAnnouncements"
           className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
         >
           <span>
@@ -42,6 +42,19 @@ function MainDashboard() {
         </NavLink>
       </li>
     </>
+  );
+  const navlink = (
+    <li>
+      <NavLink
+        to="/"
+        className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+      >
+        <span>
+          <FaHome className="w-6 h-6 text-gray-400" />
+        </span>
+        <span className={!isSidebarOpen ? "lg:hidden" : ""}>Home</span>
+      </NavLink>
+    </li>
   );
 
   return (
@@ -82,6 +95,12 @@ function MainDashboard() {
           <nav className="flex-1 overflow-hidden hover:overflow-y-auto">
             <ul className="p-2 overflow-hidden">
               {dashLink}
+              {/* Add more sidebar links here */}
+            </ul>
+            <div className="divider">--</div>
+
+            <ul className="p-2 overflow-hidden">
+              {navlink}
               {/* Add more sidebar links here */}
             </ul>
           </nav>
@@ -127,7 +146,7 @@ function MainDashboard() {
           {/* Main content header */}
           <div className="flex flex-col items-start justify-between pb-6 space-y-4 border-b lg:items-center lg:space-y-0 lg:flex-row">
             <h1 className="text-2xl font-semibold whitespace-nowrap">
-              Dashboard
+              User Dashboard
             </h1>
             {/* Add more content or components here */}
           </div>

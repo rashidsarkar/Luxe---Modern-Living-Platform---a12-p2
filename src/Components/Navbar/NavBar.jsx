@@ -106,12 +106,13 @@ function NavBar() {
               {navLinks}
             </ul>
           </div>
-          <a className="text-xl normal-case btn btn-ghost">
+          <a className="text-xl normal-case btn btn-ghost ">
             <img
               src="https://i.ibb.co/qnfmDWY/logo.png"
               className="h-full"
               alt=""
             />
+
             {/* LOGO IMG */}
           </a>
         </div>
