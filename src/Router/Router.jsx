@@ -9,6 +9,9 @@ import Home from "../Pages/Home/Home";
 // import About from "../Components/About";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Apartment from "../Pages/Apartment/Apartment";
+import Maindashbord from "../Dashboard/Maindashbord/Maindashbord";
+import UserProfile from "../Dashboard/UserProfile/UserProfile";
+import UserDashbord from "../Dashboard/UserProfile/UserDashbord";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +42,22 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      ///dasg bord
+    ],
+  },
+  //dashbord
+  {
+    path: "/dashboard",
+    element: <Maindashbord />,
+    children: [
+      {
+        path: "userProfile",
+        element: <UserProfile />,
+      },
+      {
+        path: "userDashbord",
+        element: <UserDashbord />,
       },
     ],
   },

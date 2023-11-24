@@ -152,7 +152,7 @@ function NavBar() {
                 </li>
 
                 <li className="mx-auto text-center text-[#503CA1]">
-                  <Link>Dashboard</Link>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
                 <li className="mx-auto text-center text-[#503CA1]">
                   <Link onClick={handleSingOut}>Logout</Link>
