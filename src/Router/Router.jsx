@@ -8,7 +8,7 @@ import NotFound from "../Pages/NotFound ";
 import Home from "../Pages/Home/Home";
 import About from "../Components/About";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import Apartment from "../Pages/Home/Apartment/Apartment";
+import Apartment from "../Pages/Apartment/Apartment";
 
 const router = createBrowserRouter([
   {
