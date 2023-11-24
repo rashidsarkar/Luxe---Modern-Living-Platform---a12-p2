@@ -69,7 +69,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <Maindashbord />,
+        <Maindashbord />
       </PrivateRoute>
     ),
     children: [
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
         path: "adminProfile",
         element: (
           <AdminRoute>
-            <AdminProfile />,
+            <AdminProfile />
           </AdminRoute>
         ),
       },
@@ -94,7 +94,7 @@ const router = createBrowserRouter([
         path: "manageMembers",
         element: (
           <AdminRoute>
-            <ManageMembers />,
+            <ManageMembers />
           </AdminRoute>
         ),
       },
@@ -102,8 +102,7 @@ const router = createBrowserRouter([
         path: "makeAnnouncement",
         element: (
           <AdminRoute>
-            {" "}
-            <MakeAnnouncement />,
+            <MakeAnnouncement />
           </AdminRoute>
         ),
       },
@@ -111,7 +110,7 @@ const router = createBrowserRouter([
         path: "agreementRequests",
         element: (
           <AdminRoute>
-            <AgreementRequests />,
+            <AgreementRequests />
           </AdminRoute>
         ),
       },
@@ -119,7 +118,7 @@ const router = createBrowserRouter([
         path: "ManageCoupons",
         element: (
           <AdminRoute>
-            <ManageCoupons />,
+            <ManageCoupons />
           </AdminRoute>
         ),
       },
