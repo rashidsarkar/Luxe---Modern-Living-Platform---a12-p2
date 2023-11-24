@@ -9,6 +9,7 @@ import useRole from "../../hooks/useRole";
 import CustomLoading from "../../Components/CustomLoading";
 import { GiPayMoney } from "react-icons/gi";
 import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
+import { RiCoupon2Fill } from "react-icons/ri";
 function MainDashboard() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -164,7 +165,7 @@ function MainDashboard() {
           className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
         >
           <span>
-            <VscGitPullRequestGoToChanges className="w-6 h-6 text-gray-400" />
+            <RiCoupon2Fill className="w-6 h-6 text-gray-400" />
           </span>
           <span className={!isSidebarOpen ? "lg:hidden" : ""}>
             Manage Coupons

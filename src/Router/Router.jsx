@@ -20,6 +20,7 @@ import MemberProfile from "../Dashboard/member/MemberProfile/MemberProfile";
 import Makepayment from "../Dashboard/member/Makepayment/Makepayment";
 import PaymentHistory from "../Dashboard/member/PaymentHistory/PaymentHistory";
 import ManageCoupons from "../Dashboard/Admin/ManageCoupons/ManageCoupons";
+import AdminRoute from "../PrivateRoute/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/apartment",
-        element: <Apartment />,
+        element: (
+          <PrivateRoute>
+            <Apartment />
+          </PrivateRoute>
+        ),
       },
       // {
       //   path: "/about",
@@ -57,11 +62,7 @@ const router = createBrowserRouter([
   //dashbord
   {
     path: "/dashboard",
-    element: (
-      <PrivateRoute>
-        <Maindashbord />
-      </PrivateRoute>
-    ),
+    element: <Maindashbord />,
     children: [
       {
         path: "userProfile",
