@@ -1,38 +1,43 @@
 import axios from "axios";
-import { useEffect } from "react"; // Import useEffect from React
+// Import useEffect from React
 import { useNavigate } from "react-router-dom"; // Import useNavigate from the appropriate package
 import useAuthProvider from "../FireBase/useAuthProvider";
 
 const axiosInstanceSecure = axios.create({
   baseURL: "http://localhost:5000", // Your API base URL
   // baseURL: "http://localhost:5000", //> Your API base URL
-  withCredentials: true,
 });
 
 function useAxiosInstance() {
-  const navigate = useNavigate();
   const { logOut } = useAuthProvider();
-
-  useEffect(() => {
-    axiosInstanceSecure.interceptors.response.use(
-      (res) => {
-        return res;
-      },
-      (err) => {
-        console.log("error track ", err.response);
-        if (err.response.status === 401 || err.response.status === 403) {
-          console.log("Log Out The User");
-          logOut()
-            .then(() => {
-              navigate("/login");
-            })
-            .catch((error) => console.log(error));
-        }
+  const navigate = useNavigate();
+  axiosInstanceSecure.interceptors.request.use(
+    function (config) {
+      const token = localStorage.getItem("access-token");
+      config.headers.authorization = `Bearer ${token}`;
+      return config;
+    },
+    function (error) {
+      // Do something with request error
+      return Promise.reject(error);
+    }
+  );
+  axiosInstanceSecure.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    async (error) => {
+      const status = error.response.status;
+      if (status === 401 || status === 403) {
+        await logOut();
+        navigate("/Login");
       }
-    );
-  }, [logOut, navigate]);
+      console.log("status error in interceptors", status);
+      return Promise.reject(error);
+    }
+  );
 
-  return axiosInstanceSecure; // Return the configured axiosInstance
+  return axiosInstanceSecure;
 }
 
 export default useAxiosInstance; // Export the function
