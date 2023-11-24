@@ -8,7 +8,7 @@ const axiosInstanceSecure = axios.create({
   // baseURL: "http://localhost:5000", //> Your API base URL
 });
 
-function useAxiosInstance() {
+function useAxiosInstanceSecure() {
   const { logOut } = useAuthProvider();
   const navigate = useNavigate();
   axiosInstanceSecure.interceptors.request.use(
@@ -40,4 +40,4 @@ function useAxiosInstance() {
   return axiosInstanceSecure;
 }
 
-export default useAxiosInstance; // Export the function
+export default useAxiosInstanceSecure; // Export the function

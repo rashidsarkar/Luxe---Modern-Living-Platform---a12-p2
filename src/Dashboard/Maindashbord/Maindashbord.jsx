@@ -5,6 +5,9 @@ import { MdSettings } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { IoMdClose, IoMdMegaphone } from "react-icons/io";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
+import useRole from "../../hooks/useRole";
+import CustomLoading from "../../Components/CustomLoading";
+import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
 function MainDashboard() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isSettingsPanelOpen, setSettingsPanelOpen] = useState(false);
@@ -17,7 +20,12 @@ function MainDashboard() {
     setSettingsPanelOpen(!isSettingsPanelOpen);
     //TODO -  get admin value
   };
-  const isAdmin = true;
+  // const isAdmin = true;
+  const { userRole, isLoading, isError, error } = useRole();
+
+  if (isLoading) return <CustomLoading></CustomLoading>;
+  if (isError) return <ErrorMessage error={error}></ErrorMessage>;
+  // console.log(userRole);
 
   const dashLink = (
     <>
@@ -118,9 +126,15 @@ function MainDashboard() {
     </li>
   );
   let dashboardLinks = undefined;
-  if (isAdmin) {
+  // let dashboardLinks = dashLink;
+  if (userRole == "member") {
     dashboardLinks = adminLink;
-  } else {
+    console.log("role member");
+  } else if (userRole == "admin") {
+    console.log("role  admin");
+    dashboardLinks = adminLink;
+  } else if (userRole == "user") {
+    console.log(" role user");
     dashboardLinks = dashLink;
   }
   return (
