@@ -64,9 +64,11 @@ function Banar() {
             <TextScramble text=" Find Your Ideal Home with Us" />
           </h1>
 
-          <BannerDecpt
-            text={`Discover the perfect living space with Provident Apartments. We provide a selection of thoughtfully designed rentals, ensuring comfort and convenience.`}
-          ></BannerDecpt>
+          <BannerDecpt>
+            Discover the perfect living space with Provident Apartments. We
+            provide a selection of thoughtfully designed rentals, ensuring
+            comfort and convenience.
+          </BannerDecpt>
           <button className="btn btn-primary">Explore Today!</button>
         </div>
       </div>

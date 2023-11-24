@@ -33,13 +33,13 @@ function AboutBuilding() {
                 </h2>
 
                 <span className="text-gray-700">
-                  <BannerDecpt
-                    text={`Explore our contemporary building designed to elevate your
-                  living experience. With state-of-the-art facilities and
-                  meticulously crafted interiors, our rooms offer comfort and
-                  style in every detail. Discover a new standard of living with
-                  us.`}
-                  ></BannerDecpt>
+                  <BannerDecpt>
+                    Explore our contemporary building designed to elevate your
+                    living experience. With state-of-the-art facilities and
+                    meticulously crafted interiors, our rooms offer comfort and
+                    style in every detail. Discover a new standard of living
+                    with us.
+                  </BannerDecpt>
                 </span>
               </div>
             </div>

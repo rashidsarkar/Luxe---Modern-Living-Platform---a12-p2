@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import gsap from "gsap";
 import Textify from "textify.js";
 
-function BannerDecpt({ text }) {
+function BannerDecpt({ children }) {
   useEffect(() => {
     // Use Textify.js to animate text
     new Textify(
@@ -25,7 +25,7 @@ function BannerDecpt({ text }) {
 
   return (
     <>
-      <p className="py-6 large-animation-3">{text}</p>
+      <p className="py-6 large-animation-3">{children}</p>
     </>
   );
 }

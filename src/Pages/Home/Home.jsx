@@ -14,6 +14,7 @@ import Coupon from "../../Components/Home/Coupon/Coupon";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import FindUs from "./FindUs/FindUs";
 // import useAxiosInstance from "../../AxiosAPI/useAxiosInstance";
 AOS.init();
 function Home() {
@@ -39,6 +40,9 @@ function Home() {
         <Coupon />
         <Coupon />
       </div>
+      <SectionHeading>Find us</SectionHeading>
+
+      <FindUs />
       {/* <Coupon /> */}
     </div>
   );

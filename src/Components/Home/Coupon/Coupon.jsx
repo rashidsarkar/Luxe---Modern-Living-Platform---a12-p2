@@ -3,25 +3,6 @@ import { useEffect } from "react";
 import "./Coupon.css";
 
 const Coupon = () => {
-  useEffect(() => {
-    const cuponFN = () => {
-      var cpnBtn = document.getElementById("cpnBtn");
-      var cpnCode = document.getElementById("cpnCode");
-
-      cpnBtn.onclick = function () {
-        navigator.clipboard.writeText(cpnCode.innerHTML);
-        cpnBtn.innerHTML = "COPIED";
-        setTimeout(function () {
-          cpnBtn.innerHTML = "COPY CODE";
-        }, 3000);
-      };
-    };
-
-    return () => {
-      cuponFN();
-    };
-  }, []);
-
   return (
     <div className="containerr" data-aos="flip-left">
       <div className="coupon-card">
