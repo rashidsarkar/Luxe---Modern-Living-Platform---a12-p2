@@ -1,12 +1,19 @@
-import React, { useEffect } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+/* eslint-disable react/prop-types */
+import { useEffect } from "react";
 
 import VanillaTilt from "vanilla-tilt";
 import "./FeatureSection.css";
-import CustomLoading from "../../../Components/CustomLoading";
+import useAuth from "../../../hooks/useAuth";
 
-function FeatureSection({ feature }) {
-  const { date, title, description, image } = feature || {};
+import useCreateAgreement from "../../../API/createAgreement/useCreateAgreement";
+
+function FeatureSection({ room }) {
+  const { user } = useAuth();
+
+  // console.log(user);
+  const { floorNo, blockName, apartmentNo, rent, image } = room || {};
+  const { createAgreement } = useCreateAgreement();
+  // console.log(room);
 
   useEffect(() => {
     VanillaTilt.init(document.querySelectorAll(".carda"), {
@@ -24,55 +31,67 @@ function FeatureSection({ feature }) {
     });
   }, []);
   let cardStyle = {
-    backgroundImage: `url(https://i.ibb.co/0fdj1Mh/pexels-photo-110473.webp)`,
+    backgroundImage: `url(${image})`,
+  };
+
+  const handleAgreement = async (
+    floorNo,
+    blockName,
+    apartmentNo,
+    rent,
+    userName,
+    userEmail
+  ) => {
+    // console.log(floorNo, blockName, apartmentNo, userName, userEmail);
+    const agreementInfo = {
+      floorNo,
+      blockName,
+      apartmentNo,
+      rent,
+      agreementReqName: userName,
+      agreementReqEmail: userEmail,
+      Status: "pending",
+    };
+    try {
+      await createAgreement(agreementInfo);
+    } catch (error) {
+      console.log(error);
+    }
+
+    console.log(agreementInfo);
   };
 
   return (
     <>
       <div className="mx-4 md:mx-0 cards-container">
         <div className="m-2 mx-auto carda lg:m-7 md:m-3 ">
-          <div style={cardStyle} className="card-image quiz-image">
-            {/* <LazyLoadImage
-              className="w-full"
-              effect="blur"
-              wrapperProps={{
-                // If you need to, you can tweak the effect transition using the wrapper style.
-                style: { transitionDelay: "1s" },
-              }}
-              src="https://i.ibb.co/0fdj1Mh/pexels-photo-110473.webp"
-            /> */}
-          </div>
+          <div style={cardStyle} className="card-image quiz-image"></div>
           <div className="card-text">
-            <span className="date">{`Apartment no`}</span>
-            <h2>{`this is title Block name`}</h2>
+            <span className="date">Apartment Number : {apartmentNo}</span>
+            <h2>{blockName}</h2>
 
             <div className="flex justify-around">
-              <p>Rent : $ 50025</p>
-              <p>flore no : 682</p>
+              <p>Rent: ${rent}</p>
+              <p>Floor Number : {floorNo}</p>
             </div>
           </div>
-          <button className="w-9/12 mx-auto btn btn-primary">Agreement</button>
+          <button
+            onClick={() =>
+              handleAgreement(
+                floorNo,
+                blockName,
+                apartmentNo,
+                rent,
+                user.displayName,
+                user.email
+              )
+            }
+            className="w-9/12 mx-auto btn btn-primary"
+          >
+            Agreement
+          </button>
         </div>
       </div>
-      {/* <div className="shadow-xl card cardaaa bg-base-100">
-        <figure>
-          <LazyLoadImage
-            effect="blur"
-            wrapperProps={{
-              // If you need to, you can tweak the effect transition using the wrapper style.
-              style: { transitionDelay: "1s" },
-            }}
-            src="https://i.ibb.co/0fdj1Mh/pexels-photo-110473.webp"
-          />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="justify-end card-actions">
-            <button className="btn btn-primary">Agreement</button>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }

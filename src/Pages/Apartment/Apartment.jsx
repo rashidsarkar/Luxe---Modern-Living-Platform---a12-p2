@@ -1,9 +1,21 @@
+import useApartmentRoom from "../../API/useApartmentRoom";
 import ApartmentBanar from "../../Components/App/ApartmentBanar/ApartmentBanar";
+import CustomLoading from "../../Components/CustomLoading";
+import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
 import SectionHeading from "../../Components/SectionHeading/SectionHeading";
 import SectionTitle from "../../TextEffectComponents/BannerDecpt/SectionTitle/SectionTitle";
+import useAuth from "../../hooks/useAuth";
 import FeatureSection from "../Home/Feature/FeatureSection";
 
 function Apartment() {
+  const { user } = useAuth();
+  const { roomsData, isLoading, isError, error } = useApartmentRoom();
+  // console.log(singleRoomData);
+
+  if (isLoading) return <CustomLoading></CustomLoading>;
+  if (isError) return <ErrorMessage error={error}></ErrorMessage>;
+  // console.log(roomsData);
+
   return (
     <div>
       <ApartmentBanar
@@ -16,7 +28,9 @@ function Apartment() {
         {/* //TODO -  room databse teke ante hobe */}
         {/* //TODO -  pagination koira dekate hobe */}
         <div className="grid grid-cols-3 py-9">
-          <FeatureSection />
+          {roomsData.map((room) => {
+            return <FeatureSection key={room._id} room={room}></FeatureSection>;
+          })}
         </div>
       </div>
     </div>
