@@ -52,7 +52,7 @@ function FeatureSection({ feature }) {
           <h2 className="card-title">Shoes!</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
           <div className="justify-end card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <button className="btn btn-primary">Agreement</button>
           </div>
         </div>
       </div>
