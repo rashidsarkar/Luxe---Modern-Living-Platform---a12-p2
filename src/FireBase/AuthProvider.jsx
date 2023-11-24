@@ -46,14 +46,15 @@ function AuthProvider({ children }) {
         axiosInstancePublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            setLoading(false);
           }
         });
       } else {
         //do some thiks
         localStorage.removeItem("access-token");
+        setLoading(false);
       }
 
-      setLoading(false);
       //TODO - Token Work
       // const looggedEmail = { user: currentUser?.email };
 

@@ -1,18 +1,19 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
-import CustomLoading from "../Components/CustomLoading";
 
-import { AuthContext } from "../FireBase/AuthProvider";
+import CustomLoading from "../Components/CustomLoading";
 
 import { Navigate, useLocation } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
+import useAuth from "../hooks/useAuth";
 
 function AdminRoute({ children }) {
   const location = useLocation();
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useAuth();
 
   const { adminLoading, isAdmin } = useAdmin();
-  console.log();
+  let isUser = user ? true : false;
+  // console.log(adminLoading, loading);
+  // console.log(isAdmin, isUser);
 
   if (adminLoading || loading)
     return (
@@ -21,7 +22,7 @@ function AdminRoute({ children }) {
       </div>
     );
 
-  if (user & isAdmin) return children;
+  if (isAdmin & isUser) return children;
   return <Navigate state={location.pathname} to={"/login"} replace></Navigate>;
 }
 

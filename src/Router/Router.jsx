@@ -35,9 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/apartment",
         element: (
-          <PrivateRoute>
-            <Apartment />
-          </PrivateRoute>
+          <Apartment />
+
+          // <PrivateRoute>
+          //   <Apartment />
+          // </PrivateRoute>
+          // <AdminRoute>
+          //   <Apartment />
+          // </AdminRoute>
         ),
       },
       // {
@@ -62,7 +67,11 @@ const router = createBrowserRouter([
   //dashbord
   {
     path: "/dashboard",
-    element: <Maindashbord />,
+    element: (
+      <PrivateRoute>
+        <Maindashbord />,
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "userProfile",
@@ -75,23 +84,44 @@ const router = createBrowserRouter([
       // admin route
       {
         path: "adminProfile",
-        element: <AdminProfile />,
+        element: (
+          <AdminRoute>
+            <AdminProfile />,
+          </AdminRoute>
+        ),
       },
       {
         path: "manageMembers",
-        element: <ManageMembers />,
+        element: (
+          <AdminRoute>
+            <ManageMembers />,
+          </AdminRoute>
+        ),
       },
       {
         path: "makeAnnouncement",
-        element: <MakeAnnouncement />,
+        element: (
+          <AdminRoute>
+            {" "}
+            <MakeAnnouncement />,
+          </AdminRoute>
+        ),
       },
       {
         path: "agreementRequests",
-        element: <AgreementRequests />,
+        element: (
+          <AdminRoute>
+            <AgreementRequests />,
+          </AdminRoute>
+        ),
       },
       {
         path: "ManageCoupons",
-        element: <ManageCoupons />,
+        element: (
+          <AdminRoute>
+            <ManageCoupons />,
+          </AdminRoute>
+        ),
       },
       // member route
       {
