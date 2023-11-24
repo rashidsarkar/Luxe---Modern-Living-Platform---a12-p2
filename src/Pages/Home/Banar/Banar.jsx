@@ -44,12 +44,12 @@ function Banar() {
                 className="object-fill rounded-lg shadow-2xl lg:max-w-lg"
               />
             </SwiperSlide>
-            <SwiperSlide>
+            {/* <SwiperSlide>
               <img
                 src="https://i.ibb.co/8X0wG9C/aaron-huber-s95o-B2n9jng-unsplash.jpg"
                 className="object-fill rounded-lg shadow-2xl lg:max-w-lg"
               />
-            </SwiperSlide>
+            </SwiperSlide> */}
             <SwiperSlide>
               <img
                 src="https://i.ibb.co/8NrB31h/frames-for-your-heart-Fqqi-Av-Jejto-unsplash.jpg"

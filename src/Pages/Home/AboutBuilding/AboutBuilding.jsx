@@ -1,6 +1,7 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import BannerDecpt from "../../../TextEffectComponents/BannerDecpti/BannerDecpt";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function AboutBuilding() {
   return (
@@ -59,9 +60,17 @@ function AboutBuilding() {
                 ></path>
               </svg>
               <div className="abg-orange-400 mx-auto w-fit overflow-hidden rounded-[6rem] rounded-br-none rounded-tl-none">
-                <img
+                {/* <img
                   src="https://i.ibb.co/bW5nJ82/pexels-tirachard-kumtanom-347141.jpg"
                   alt="placeholder"
+                /> */}
+                <LazyLoadImage
+                  effect="blur"
+                  wrapperProps={{
+                    // If you need to, you can tweak the effect transition using the wrapper style.
+                    style: { transitionDelay: "1s" },
+                  }}
+                  src="https://i.ibb.co/bW5nJ82/pexels-tirachard-kumtanom-347141.jpg"
                 />
               </div>
             </div>
