@@ -15,7 +15,7 @@ function useRole() {
       const res = await axiosInstanceSecure.get(
         `/api/user/userRole/${user.email}`
       );
-      // console.log(res.data);
+      // console.log(res.data)
       return res.data.userRole;
     },
     queryKey: [user?.email, "userRole"],
