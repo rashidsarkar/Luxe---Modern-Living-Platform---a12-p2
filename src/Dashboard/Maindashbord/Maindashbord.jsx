@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { AiOutlineMenu, AiOutlineGithub } from "react-icons/ai";
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaUser, FaUsers } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import { IoMdClose, IoMdMegaphone } from "react-icons/io";
+import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 function MainDashboard() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isSettingsPanelOpen, setSettingsPanelOpen] = useState(false);
@@ -14,7 +15,10 @@ function MainDashboard() {
 
   const toggleSettingsPanel = () => {
     setSettingsPanelOpen(!isSettingsPanelOpen);
+    //TODO -  get admin value
   };
+  const isAdmin = true;
+
   const dashLink = (
     <>
       <li>
@@ -43,6 +47,63 @@ function MainDashboard() {
       </li>
     </>
   );
+  const adminLink = (
+    <>
+      <li>
+        <NavLink
+          to="/dashboard/adminProfile"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <FaUser className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Admin Profile
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/manageMembers"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <FaUsers className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Manage Members
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/makeAnnouncement"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <IoMdMegaphone className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Make Announcement
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/agreementRequests 
+      "
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <VscGitPullRequestGoToChanges className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Agreement Requests
+          </span>
+        </NavLink>
+      </li>
+    </>
+  );
   const navlink = (
     <li>
       <NavLink
@@ -56,7 +117,12 @@ function MainDashboard() {
       </NavLink>
     </li>
   );
-
+  let dashboardLinks = undefined;
+  if (isAdmin) {
+    dashboardLinks = adminLink;
+  } else {
+    dashboardLinks = dashLink;
+  }
   return (
     <div>
       <div className="flex min-h-screen overflow-y-hidden bg-white">
@@ -94,7 +160,7 @@ function MainDashboard() {
           {/* Sidebar links */}
           <nav className="flex-1 overflow-hidden hover:overflow-y-auto">
             <ul className="p-2 overflow-hidden">
-              {dashLink}
+              {dashboardLinks}
               {/* Add more sidebar links here */}
             </ul>
             <div className="divider">--</div>

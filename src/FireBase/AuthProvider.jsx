@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "./firebaseConfig ";
+import axiosInstancePublic from "../AxiosAPI/axiosInstance";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -39,6 +40,19 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser) {
+        //crete
+        const userInfo = { email: currentUser.email };
+        axiosInstancePublic.post("/jwt", userInfo).then((res) => {
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        });
+      } else {
+        //do some thiks
+        localStorage.removeItem("access-token");
+      }
+
       setLoading(false);
       //TODO - Token Work
       // const looggedEmail = { user: currentUser?.email };

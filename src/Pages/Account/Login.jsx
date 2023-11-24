@@ -4,6 +4,7 @@ import { SiGoogle } from "react-icons/si";
 import { AuthContext } from "../../FireBase/AuthProvider";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
+import axiosInstancePublic from "../../AxiosAPI/axiosInstance";
 
 function Login() {
   const { loginEmPAss, googleSing, user } = useContext(AuthContext);
@@ -32,8 +33,17 @@ function Login() {
   const handleGoogleSignIn = () => {
     googleSing()
       .then((currentUser) => {
-        console.log("google singin", currentUser);
-        swal("Success", "Signup successful!", "success");
+        console.log(currentUser.user);
+        const userInfo = {
+          name: currentUser.user?.displayName,
+          email: currentUser.user?.email,
+        };
+        axiosInstancePublic.post("api/createUser", userInfo).then((res) => {
+          console.log(res.data);
+        });
+        console.log(userInfo);
+
+        swal("Success", "Signin successful!", "success");
         navigat(preveLocation?.state || "/");
       })
       .catch((error) => {

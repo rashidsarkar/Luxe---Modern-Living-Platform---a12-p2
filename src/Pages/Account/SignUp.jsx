@@ -4,6 +4,7 @@ import { SiGoogle } from "react-icons/si";
 import swal from "sweetalert";
 import { AuthContext } from "../../FireBase/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import axiosInstancePublic from "../../AxiosAPI/axiosInstance";
 
 function SignUp() {
   const { singupWithEmalPass, googleSing, user, setUser, updateProfiles } =
@@ -32,15 +33,24 @@ function SignUp() {
         .then((currentUser) => {
           updateProfiles(name, image)
             .then(() => {
-              swal("Success", "Signup successful!", "success");
-              navigat(preveLocation?.state || "/");
-              setUser({
-                ...user,
-                displayName: name,
-                photoURL: image,
-                email: email,
-                uid: currentUser.user.uid,
-              });
+              const userInfo = { name, email };
+              axiosInstancePublic
+                .post("/api/createUser", userInfo)
+                .then((res) => {
+                  if (res.data.insertedId) {
+                    console.log("user added db");
+                    swal("Success", "Signup successful!", "success");
+                    navigat(preveLocation?.state || "/");
+                    setUser({
+                      ...user,
+                      displayName: name,
+                      photoURL: image,
+                      email: email,
+                      uid: currentUser.user.uid,
+                    });
+                  }
+                });
+
               console.log(currentUser.user);
               console.log(user);
             })
@@ -60,6 +70,13 @@ function SignUp() {
     googleSing()
       .then((currentUser) => {
         console.log("google singUP", currentUser);
+        const userInfo = {
+          name: currentUser.user?.displayName,
+          email: currentUser.user?.email,
+        };
+        axiosInstancePublic.post("api/createUser", userInfo).then((res) => {
+          console.log(res.data);
+        });
         // setUser({
         //   ...user,
         //   displayName: currentUser.user.displayName,

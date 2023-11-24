@@ -12,6 +12,10 @@ import Apartment from "../Pages/Apartment/Apartment";
 import Maindashbord from "../Dashboard/Maindashbord/Maindashbord";
 import UserProfile from "../Dashboard/UserProfile/UserProfile";
 import UserAnnouncements from "../Dashboard/UserProfile/UserAnnouncements";
+import AdminProfile from "../Dashboard/Admin/AdminProfile/AdminProfile";
+import ManageMembers from "../Dashboard/Admin/ManageMembers/ManageMembers";
+import MakeAnnouncement from "../Dashboard/Admin/MakeAnnouncement/MakeAnnouncement";
+import AgreementRequests from "../Dashboard/Admin/AgreementRequests/AgreementRequests";
 
 const router = createBrowserRouter([
   {
@@ -49,7 +53,11 @@ const router = createBrowserRouter([
   //dashbord
   {
     path: "/dashboard",
-    element: <Maindashbord />,
+    element: (
+      <PrivateRoute>
+        <Maindashbord />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "userProfile",
@@ -58,6 +66,23 @@ const router = createBrowserRouter([
       {
         path: "UserAnnouncements",
         element: <UserAnnouncements />,
+      },
+      // admin route
+      {
+        path: "adminProfile",
+        element: <AdminProfile />,
+      },
+      {
+        path: "manageMembers",
+        element: <ManageMembers />,
+      },
+      {
+        path: "makeAnnouncement",
+        element: <MakeAnnouncement />,
+      },
+      {
+        path: "agreementRequests",
+        element: <AgreementRequests />,
       },
     ],
   },
