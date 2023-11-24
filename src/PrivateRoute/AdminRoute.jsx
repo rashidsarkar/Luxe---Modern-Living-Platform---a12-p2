@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import CustomLoading from "../Components/CustomLoading";
 import ErrorMessage from "../Components/ErrorMessage/ErrorMessage";

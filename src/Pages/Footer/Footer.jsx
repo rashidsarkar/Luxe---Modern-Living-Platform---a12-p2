@@ -13,9 +13,13 @@ const Footer = () => {
     <>
       <footer className="p-10 footer bg-base-200 text-base-content">
         <aside>
-          <img src="https://i.ibb.co/qnfmDWY/logo.png" alt="" />
+          <img
+            className="w-[150px]"
+            src="https://i.ibb.co/qnfmDWY/logo.png"
+            alt=""
+          />
 
-          <p className="text-gray-700 mb-7 w-[380px] text-body-color mt-7 dark:text-dark-6">
+          <p className="text-gray-700 mb-7 lg:w-[380px] text-body-color mt-7 dark:text-dark-6">
             Elevate your living experience with Luxw. Discover a new standard of
             luxury and comfort at the heart of Dhanmondi. Manage your dream home
             in our prestigious buildings.

@@ -62,7 +62,7 @@ function Apartment() {
         <SectionHeading>Explore Our Rooms</SectionHeading>
         {/* //TODO -  room databse teke ante hobe */}
         {/* //TODO -  pagination koira dekate hobe */}
-        <div className="grid grid-cols-3 py-9">
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 py-9">
           {/* {roomsData.map((room) => {
             return <FeatureSection key={room._id} room={room}></FeatureSection>;
           })} */}

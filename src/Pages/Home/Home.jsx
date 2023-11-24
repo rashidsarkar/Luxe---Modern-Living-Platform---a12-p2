@@ -1,12 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
 import Banar from "./Banar/Banar";
-import FeatureSection from "./Feature/FeatureSection";
 
-import CustomLoading from "../../Components/CustomLoading";
-import FreqQusSection from "./FreqQusSection/FreqQusSection";
-import SectionDividerWithText from "../../Components/SectionDividerWithText";
-import useAuthProvider from "../../FireBase/useAuthProvider";
-import BannerSlider from "../../Components/Home/BannerSlider/BannerSlider";
 import SectionTitle from "../../TextEffectComponents/BannerDecpt/SectionTitle/SectionTitle";
 import SectionHeading from "../../Components/SectionHeading/SectionHeading";
 import AboutBuilding from "./AboutBuilding/AboutBuilding";

@@ -16,6 +16,10 @@ import AdminProfile from "../Dashboard/Admin/AdminProfile/AdminProfile";
 import ManageMembers from "../Dashboard/Admin/ManageMembers/ManageMembers";
 import MakeAnnouncement from "../Dashboard/Admin/MakeAnnouncement/MakeAnnouncement";
 import AgreementRequests from "../Dashboard/Admin/AgreementRequests/AgreementRequests";
+import MemberProfile from "../Dashboard/member/MemberProfile/MemberProfile";
+import Makepayment from "../Dashboard/member/Makepayment/Makepayment";
+import PaymentHistory from "../Dashboard/member/PaymentHistory/PaymentHistory";
+import ManageCoupons from "../Dashboard/Admin/ManageCoupons/ManageCoupons";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +87,23 @@ const router = createBrowserRouter([
       {
         path: "agreementRequests",
         element: <AgreementRequests />,
+      },
+      {
+        path: "ManageCoupons",
+        element: <ManageCoupons />,
+      },
+      // member route
+      {
+        path: "MemberProfile",
+        element: <MemberProfile />,
+      },
+      {
+        path: "Makepayment",
+        element: <Makepayment />,
+      },
+      {
+        path: "PaymentHistory",
+        element: <PaymentHistory />,
       },
     ],
   },

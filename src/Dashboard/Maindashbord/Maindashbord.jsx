@@ -1,32 +1,81 @@
 import { useState } from "react";
-import { AiOutlineMenu, AiOutlineGithub } from "react-icons/ai";
-import { FaHome, FaUser, FaUsers } from "react-icons/fa";
+import { AiOutlineMenu } from "react-icons/ai";
+import { FaHistory, FaHome, FaUser, FaUsers } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
-import { IoMdClose, IoMdMegaphone } from "react-icons/io";
+import { IoMdMegaphone } from "react-icons/io";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 import useRole from "../../hooks/useRole";
 import CustomLoading from "../../Components/CustomLoading";
+import { GiPayMoney } from "react-icons/gi";
 import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
 function MainDashboard() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isSettingsPanelOpen, setSettingsPanelOpen] = useState(false);
 
   const toggleSidebarMenu = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  const toggleSettingsPanel = () => {
-    setSettingsPanelOpen(!isSettingsPanelOpen);
-    //TODO -  get admin value
-  };
   // const isAdmin = true;
   const { userRole, isLoading, isError, error } = useRole();
 
   if (isLoading) return <CustomLoading></CustomLoading>;
   if (isError) return <ErrorMessage error={error}></ErrorMessage>;
   // console.log(userRole);
-
+  const memberLink = (
+    <>
+      <li>
+        <NavLink
+          to="/dashboard/MemberProfile"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <FaUser className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>My Profile</span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/Makepayment"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <GiPayMoney className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Make payment
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/PaymentHistory "
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <FaHistory className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Payment History
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/UserAnnouncements"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <IoMdMegaphone className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Announcements
+          </span>
+        </NavLink>
+      </li>
+    </>
+  );
   const dashLink = (
     <>
       <li>
@@ -98,8 +147,7 @@ function MainDashboard() {
       </li>
       <li>
         <NavLink
-          to="/dashboard/agreementRequests 
-      "
+          to="/dashboard/agreementRequests"
           className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
         >
           <span>
@@ -107,6 +155,19 @@ function MainDashboard() {
           </span>
           <span className={!isSidebarOpen ? "lg:hidden" : ""}>
             Agreement Requests
+          </span>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/ManageCoupons"
+          className="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
+        >
+          <span>
+            <VscGitPullRequestGoToChanges className="w-6 h-6 text-gray-400" />
+          </span>
+          <span className={!isSidebarOpen ? "lg:hidden" : ""}>
+            Manage Coupons
           </span>
         </NavLink>
       </li>
@@ -128,7 +189,7 @@ function MainDashboard() {
   let dashboardLinks = undefined;
   // let dashboardLinks = dashLink;
   if (userRole == "member") {
-    dashboardLinks = adminLink;
+    dashboardLinks = memberLink;
     console.log("role member");
   } else if (userRole == "admin") {
     console.log("role  admin");
@@ -225,8 +286,8 @@ function MainDashboard() {
 
           {/* Main content header */}
           <div className="flex flex-col items-start justify-between pb-6 space-y-4 border-b lg:items-center lg:space-y-0 lg:flex-row">
-            <h1 className="text-2xl font-semibold whitespace-nowrap">
-              User Dashboard
+            <h1 className="text-2xl font-semibold text-center capitalize whitespace-nowrap">
+              {userRole} Dashboard
             </h1>
             {/* Add more content or components here */}
           </div>

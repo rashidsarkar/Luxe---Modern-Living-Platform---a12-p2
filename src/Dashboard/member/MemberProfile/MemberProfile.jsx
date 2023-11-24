@@ -1,13 +1,9 @@
-import React from "react";
-import UserCard from "./UserCard/UserCard";
-import AgreementData from "./agreementData/AgreementData";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
+import UserCard from "../../UserProfile/UserCard/UserCard";
+import AgreementData from "../../UserProfile/agreementData/AgreementData";
 
-function UserProfile() {
-  // Sample user data
+function MemberProfile() {
   const { user } = useAuth();
-  console.log(user);
-
   return (
     <div className="flex flex-col py-20 space-y-4 lg:space-y-0 ">
       {/* User Information */}
@@ -33,4 +29,4 @@ function UserProfile() {
   );
 }
 
-export default UserProfile;
+export default MemberProfile;
