@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import useUpdateCoupon from "../../../API/AdminAPI/useUpdateCoupon";
 
 function ModalCoponUpdate({ midalID, updateData }) {
-  // console.log(updateData);
   const { couponCode, description, discountPercentage, _id } = updateData || {};
   const { updateCoupon } = useUpdateCoupon();
   useEffect(() => {
