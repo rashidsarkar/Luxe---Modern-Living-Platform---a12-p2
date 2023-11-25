@@ -8,20 +8,15 @@ function useHandleAcpt() {
 
   const { mutateAsync: handleAcptApi, error: acptError } = useMutation({
     mutationFn: async (apiInfo) => {
-      const { id, email: email2 } = apiInfo || {};
-      const email = { email: email2 };
+      const { id, email: email2, agreementAcceptDate } = apiInfo || {};
+      const email = { email: email2, agreementAcceptDate: agreementAcceptDate };
       // console.log(apiInfo);
       // console.log(emailw);
       const res = await axiosSecure.put(
         `/api/admin/handleAcptreq/${id}`,
         email
       );
-      // const res = await axiosSecure.put(
-      //   `/api/admin/handleAcptreq/${id}`,
-      //   email
-      // );
-
-      // console.log(res.data);
+      console.log(res.data);
       return res.data;
     },
     onError: () => {

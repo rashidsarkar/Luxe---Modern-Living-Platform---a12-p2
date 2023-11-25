@@ -203,6 +203,7 @@ function MainDashboard() {
     <div>
       <div
         data-theme="wireframe"
+        // data-theme="cyberpunk"
         className="flex min-h-screen overflow-y-hidden bg-white"
       >
         {/* Sidebar backdrop */}

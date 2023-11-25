@@ -19,9 +19,14 @@ function AgreementRequests() {
 
   if (isLoading) return <CustomLoading />;
   if (isError) return <ErrorMessage error={error} />;
+  const currentDate = new Date();
+  const formattedDate = `${
+    currentDate.getMonth() + 1
+  }/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+  // console.log(formattedDate);
   const handleAcpt = async (id, email) => {
-    console.log(id, email);
-    const dataforApi = { id, email };
+    const dataforApi = { id, email, agreementAcceptDate: formattedDate };
+    // console.log(dataforApi);
     await handleAcptApi(dataforApi);
   };
   const useHandleRejectBtn = async (id) => {
@@ -30,7 +35,7 @@ function AgreementRequests() {
 
   return (
     <div>
-      {/* <p className="font-bold pb-5 ">Agreement Requests</p> */}
+      <p className="font-bold pb-5 ">Agreement Requests</p>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

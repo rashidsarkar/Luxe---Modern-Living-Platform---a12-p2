@@ -40,7 +40,7 @@ function DatabaseInfo() {
             <FaRestroom className="text-4xl" />
           </div>
           <div className="stat-title">Available Rooms</div>
-          <div className="stat-value">{percentavailable} %</div>
+          <div className="stat-value">{percentavailable.toFixed(2)} %</div>
         </div>
 
         <div className="stat">
