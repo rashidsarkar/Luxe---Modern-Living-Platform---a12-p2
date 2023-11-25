@@ -201,7 +201,10 @@ function MainDashboard() {
   }
   return (
     <div>
-      <div className="flex min-h-screen overflow-y-hidden bg-white">
+      <div
+        data-theme="wireframe"
+        className="flex min-h-screen overflow-y-hidden bg-white"
+      >
         {/* Sidebar backdrop */}
         <div
           className={`fixed inset-0 z-10 bg-black bg-opacity-20 lg:hidden ${
@@ -248,14 +251,14 @@ function MainDashboard() {
           </nav>
 
           {/* Sidebar footer */}
-          <div className="flex-shrink-0 p-2 border-t max-h-14">
+          {/* <div className="flex-shrink-0 p-2 border-t max-h-14">
             <button className="flex items-center justify-center w-full px-4 py-2 space-x-1 font-medium tracking-wider uppercase bg-gray-100 border rounded-md focus:outline-none focus:ring">
               <span>
                 <MdSettings className="w-6 h-6" />
               </span>
               <span className={!isSidebarOpen ? "lg:hidden" : ""}>Logout</span>
             </button>
-          </div>
+          </div> */}
         </aside>
 
         {/* Main content */}
