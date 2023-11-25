@@ -1,6 +1,8 @@
 import { useState } from "react";
+import useMakeAnnounce from "../../../API/AdminAPI/useMakeAccoun";
 
 function MakeAnnouncement() {
+  const { makeAccoun } = useMakeAnnounce();
   const [announcement, setAnnouncement] = useState({
     title: "",
     description: "",
@@ -14,10 +16,12 @@ function MakeAnnouncement() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your logic to send the announcement to the server
     console.log("Announcement submitted:", announcement);
+    await makeAccoun(announcement);
+
     // Clear the form after submission
     setAnnouncement({
       title: "",
