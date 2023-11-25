@@ -3,12 +3,34 @@ import CustomLoading from "../../../Components/CustomLoading";
 import ErrorMessage from "../../../Components/ErrorMessage/ErrorMessage";
 import { IoMdAdd } from "react-icons/io";
 import ModalCopon from "./ModalCopon";
+import { RiDeleteBin5Line } from "react-icons/ri";
+import { MdEditDocument } from "react-icons/md";
+import ModalCoponUpdate from "./ModalCoponUpdate";
+import Swal from "sweetalert2";
+import useUpdateCoupon from "../../../API/AdminAPI/useUpdateCoupon";
 
 function ManageCoupons() {
   const { error, getCoupon, isError, isLoading } = useGetCoupon();
+  const { deleteCopun } = useUpdateCoupon();
+
   if (isLoading) return <CustomLoading></CustomLoading>;
   if (isError) return <ErrorMessage error={error}></ErrorMessage>;
   console.log(getCoupon);
+  const handleDeledCopon = async (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await deleteCopun(id);
+      }
+    });
+  };
   return (
     <div>
       <p className="font-bold p-8"> Manage Coupons</p>
@@ -20,6 +42,8 @@ function ManageCoupons() {
               <th>Coupon Code</th>
               <th>Discount Percentage</th>
               <th>Coupon Description</th>
+              <th>Update Coupon</th>
+              <th>Delete Coupon</th>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +54,29 @@ function ManageCoupons() {
                   <td>{coupon.couponCode}</td>
                   <td>{coupon.discountPercentage} %</td>
                   <td>{coupon.description}</td>
+                  <td>
+                    <button
+                      onClick={() =>
+                        document.getElementById(coupon._id).showModal()
+                      }
+                      className="btn btn-ghostHandl btn-xs"
+                    >
+                      <MdEditDocument /> Update
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDeledCopon(coupon._id)}
+                      className="btn btn-ghostHandl btn-xs"
+                    >
+                      <RiDeleteBin5Line /> Delete
+                    </button>
+                    <ModalCoponUpdate
+                      midalID={coupon._id}
+                      updateData={coupon}
+                    ></ModalCoponUpdate>
+                    {/* <ModalCoponUpdate />  */}
+                  </td>
                 </tr>
               );
             })}
