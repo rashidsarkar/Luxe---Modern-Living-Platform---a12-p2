@@ -36,7 +36,7 @@ function ModalCopon({ id }) {
       description: couponDescription,
     };
     await makeCoupon(cuponData);
-    // Close the modal after handling the form submission
+    // Close the modal after handling the form submission form
     e.target.reset();
     const dialog = document.getElementById(id);
     dialog.close();
