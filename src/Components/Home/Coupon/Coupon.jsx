@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import "./Coupon.css";
 
-const Coupon = () => {
+const Coupon = ({ couponCode, description, discountPercentage }) => {
   return (
     <div className="containerr" data-aos="flip-left">
       <div className="coupon-card">
@@ -13,18 +13,16 @@ const Coupon = () => {
             className="text-center logo"
           />
         </div>
-        <h3>
-          20% flat off on all rides within the city using HDFC Credit Card
-        </h3>
+        <h3 className="lg:h-[200px]">{description}</h3>
         <div className="coupon-row">
           <span className="cpnCode" id="cpnCode">
-            STEALDEAL20
+            {couponCode}
           </span>
           <span className="cpnBtn" id="cpnBtn">
             Copy
           </span>
         </div>
-        {/* <p>Valid Till: 20 Dec, 2021</p> */}
+        <p>Discount {discountPercentage} % </p>
         <div className=" circle1"></div>
         <div className="circle2"></div>
       </div>

@@ -35,14 +35,19 @@ function FeatureSection({ room }) {
   let cardStyle = {
     backgroundImage: `url(${image})`,
   };
-
+  const currentDate = new Date();
+  const formattedDate = `${
+    currentDate.getMonth() + 1
+  }/${currentDate.getDate()}/${currentDate.getFullYear()}`;
+  console.log(formattedDate);
   const handleAgreement = async (
     floorNo,
     blockName,
     apartmentNo,
     rent,
     userName,
-    userEmail
+    userEmail,
+    image
   ) => {
     // console.log(floorNo, blockName, apartmentNo, userName, userEmail);
     const agreementInfo = {
@@ -53,6 +58,8 @@ function FeatureSection({ room }) {
       agreementReqName: userName,
       agreementReqEmail: userEmail,
       Status: "pending",
+      agreementRequestDate: formattedDate,
+      image,
     };
 
     try {
@@ -87,7 +94,8 @@ function FeatureSection({ room }) {
                     apartmentNo,
                     rent,
                     user.displayName,
-                    user.email
+                    user.email,
+                    image
                   )
                 : navigate("/login")
             }

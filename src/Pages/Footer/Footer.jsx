@@ -42,13 +42,13 @@ const Footer = () => {
           <header className="footer-title">Social</header>
           <div className="grid grid-flow-col gap-4">
             <a>
-              <FaTwitter className="text-3xl" />
+              <FaTwitter className="text-3xl cursor-pointer" />
             </a>
             <a>
-              <FaYoutube className="text-3xl" />
+              <FaYoutube className="text-3xl cursor-pointer" />
             </a>
             <a>
-              <FaFacebook className="text-3xl" />
+              <FaFacebook className="text-3xl cursor-pointer" />
             </a>
           </div>
         </nav>

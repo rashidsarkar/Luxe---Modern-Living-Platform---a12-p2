@@ -42,7 +42,11 @@ function useManageMembers() {
         text: "Your Member has been deleted.",
         icon: "success",
       });
-      queryClient.invalidateQueries(["membersInfo", "databaseInfo"]);
+      queryClient.invalidateQueries([
+        "membersInfo",
+        "databaseInfo",
+        "create-agreement",
+      ]);
     },
   });
 

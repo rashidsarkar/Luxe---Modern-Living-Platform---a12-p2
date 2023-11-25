@@ -1,7 +1,8 @@
 import axios from "axios";
-// Import useEffect from React
-import { useNavigate } from "react-router-dom"; // Import useNavigate from the appropriate package
-import useAuthProvider from "../FireBase/useAuthProvider";
+
+import { useNavigate } from "react-router-dom";
+
+import useAuth from "../hooks/useAuth";
 
 const axiosInstanceSecure = axios.create({
   baseURL: "http://localhost:5000", // Your API base URL
@@ -9,7 +10,7 @@ const axiosInstanceSecure = axios.create({
 });
 
 function useAxiosInstanceSecure() {
-  const { logOut } = useAuthProvider();
+  const { logOut } = useAuth();
   const navigate = useNavigate();
   axiosInstanceSecure.interceptors.request.use(
     function (config) {

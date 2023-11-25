@@ -6,8 +6,8 @@ function UserCard({ imageUrl, title, description }) {
         <img src={imageUrl} alt="Card" />
       </div>
       <div className="content">
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <h2>Name : {title}</h2>
+        <p>Email : {description}</p>
       </div>
     </div>
   );

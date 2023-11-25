@@ -1,11 +1,15 @@
 import Swal from "sweetalert2";
-import axiosInstancePublic from "../../AxiosAPI/axiosInstance";
-import { useMutation } from "@tanstack/react-query";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import useAxiosInstanceSecure from "../../AxiosAPI/useAxiosInstance";
 
 function useCreateAgreement() {
+  const axiosSecure = useAxiosInstanceSecure();
+  const queryClient = useQueryClient();
+
   const { mutateAsync: createAgreement } = useMutation({
     mutationFn: async (postData) => {
-      const result = await axiosInstancePublic.post(
+      const result = await axiosSecure.post(
         `/api/user/createAgreement`,
         postData
       );
@@ -15,6 +19,8 @@ function useCreateAgreement() {
     },
     mutationKey: ["create-agreement"],
     onSuccess: () => {
+      queryClient.invalidateQueries(["create-agreement"]);
+
       Swal.fire({
         icon: "success",
         title: "Success!",

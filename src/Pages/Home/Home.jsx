@@ -8,6 +8,9 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import FindUs from "./FindUs/FindUs";
+import useGetCoupon from "../../API/Home/useGetCoupon";
+import CustomLoading from "../../Components/CustomLoading";
+import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
 
 AOS.init();
 function Home() {
@@ -15,6 +18,10 @@ function Home() {
     AOS.init({ duration: 1000 }); // Initialize AOS for each Coupon component
     AOS.refresh();
   });
+  const { error, getCoupon, isError, isLoading } = useGetCoupon();
+  if (isLoading) return <CustomLoading></CustomLoading>;
+  if (isError) return <ErrorMessage error={error}></ErrorMessage>;
+  console.log(getCoupon);
 
   return (
     <div className="min-h-screen">
@@ -27,12 +34,16 @@ function Home() {
       <SectionTitle>Latest Coupon Codes and Deals</SectionTitle>
       <div className="grid grid-cols-1 gap-6 overflow-x-hidden overflow-y-hidden lg:grid-cols-3">
         {/* //TODO - Coupon part api teke ante hobe */}
-        <Coupon />
-        <Coupon />
-        <Coupon />
-        <Coupon />
-        <Coupon />
-        <Coupon />
+        {getCoupon.map((coupon) => {
+          return (
+            <Coupon
+              key={coupon._id}
+              couponCode={coupon.couponCode}
+              description={coupon.description}
+              discountPercentage={coupon.discountPercentage}
+            />
+          );
+        })}
       </div>
       <SectionHeading>Find us</SectionHeading>
 
