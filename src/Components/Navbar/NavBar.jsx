@@ -1,13 +1,35 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuthProvider from "../../FireBase/useAuthProvider";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import "./nabvar.css";
 import Headroom from "react-headroom";
+import useRole from "../../hooks/useRole";
+import CustomLoading from "../CustomLoading";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 function NavBar() {
   // Replace with your actual authentication logic
+  const navigate = useNavigate();
 
-  const { user, logOut } = useAuthProvider();
+  const { user, logOut, loading } = useAuthProvider();
+  let navDashLink = "/dashboard/userProfile";
+
+  const { userRole, isLoading, isError, error } = useRole();
+  if (!loading) {
+    console.log(userRole, "from navbar");
+
+    // let dashboardLinks = dashLink;
+    if (userRole == "member") {
+      navDashLink = "/dashboard/MemberProfile";
+      console.log("role member");
+    } else if (userRole == "admin") {
+      console.log("role  admin");
+      navDashLink = "/dashboard/adminProfile";
+    } else if (userRole == "user") {
+      console.log(" role user");
+      navDashLink = "/dashboard/userProfile";
+    }
+  }
 
   const handleSingOut = () => {
     logOut()
@@ -137,7 +159,8 @@ function NavBar() {
                 </li>
 
                 <li className="mx-auto text-center text-[#503CA1]">
-                  <Link to="/dashboard">Dashboard</Link>
+                  <Link to={navDashLink}>Dashboard</Link>
+                  {/*  */}
                 </li>
                 <li className="mx-auto text-center text-[#503CA1]">
                   <Link onClick={handleSingOut}>Logout</Link>

@@ -8,6 +8,7 @@ import { MdEditDocument } from "react-icons/md";
 import ModalCoponUpdate from "./ModalCoponUpdate";
 import Swal from "sweetalert2";
 import useUpdateCoupon from "../../../API/AdminAPI/useUpdateCoupon";
+import DashHeading from "../../../Components/DashHeading/DashHeading";
 
 function ManageCoupons() {
   const { error, getCoupon, isError, isLoading } = useGetCoupon();
@@ -33,7 +34,7 @@ function ManageCoupons() {
   };
   return (
     <div>
-      <p className="font-bold p-8"> Manage Coupons</p>
+      <DashHeading>Manage Coupons</DashHeading>
       <div className="overflow-x-auto max-w-4xl mx-auto">
         <table className="table">
           <thead>

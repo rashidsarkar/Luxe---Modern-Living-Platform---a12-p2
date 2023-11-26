@@ -3,6 +3,7 @@ import useManageMembers from "../../../API/AdminAPI/useManageMembers";
 import CustomLoading from "../../../Components/CustomLoading";
 import ErrorMessage from "../../../Components/ErrorMessage/ErrorMessage";
 import Swal from "sweetalert2";
+import DashHeading from "../../../Components/DashHeading/DashHeading";
 
 function ManageMembers() {
   const { memberInfo, error, isError, isLoading, deleteMember } =
@@ -30,7 +31,7 @@ function ManageMembers() {
 
   return (
     <div>
-      <p>Manage Members</p>
+      <DashHeading>Manage Members</DashHeading>
       <div>
         <div className="overflow-x-auto">
           <table className="table w-full">
@@ -38,9 +39,9 @@ function ManageMembers() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>User Name</th>
-                <th>User Email</th>
-                <th>Remove User</th>
+                <th>Member Name</th>
+                <th>Member Email</th>
+                <th>Remove Member</th>
               </tr>
             </thead>
             <tbody>

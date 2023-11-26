@@ -7,6 +7,7 @@ import ErrorMessage from "../../../Components/ErrorMessage/ErrorMessage";
 import { FaCheck, FaTimes } from "react-icons/fa";
 import useHandleAcpt from "../../../API/AdminAPI/useHandleAcpt";
 import useHandleReject from "../../../API/AdminAPI/useHandleReject";
+import DashHeading from "../../../Components/DashHeading/DashHeading";
 function AgreementRequests() {
   const { allArgumentData, error, isError, isLoading } = useAllargument();
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -35,7 +36,7 @@ function AgreementRequests() {
 
   return (
     <div>
-      <p className="font-bold pb-5 ">Agreement Requests</p>
+      <DashHeading>Agreement Requests</DashHeading>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

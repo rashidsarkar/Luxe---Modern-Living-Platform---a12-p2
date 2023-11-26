@@ -3,8 +3,9 @@ import useAuthProvider from "../FireBase/useAuthProvider";
 import useAxiosInstanceSecure from "../AxiosAPI/useAxiosInstance";
 
 function useRole() {
-  const { user } = useAuthProvider();
+  const { user, loading } = useAuthProvider();
   const axiosInstanceSecure = useAxiosInstanceSecure();
+
   const {
     data: userRole,
     isLoading,
@@ -18,6 +19,7 @@ function useRole() {
       // console.log(res.data)
       return res.data.userRole;
     },
+    enabled: !loading,
     queryKey: [user?.email, "userRole"],
   });
   return { userRole, isLoading, isError, error };
