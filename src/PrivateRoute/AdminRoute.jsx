@@ -23,7 +23,7 @@ function AdminRoute({ children }) {
     );
 
   if (isAdmin & isUser) return children;
-  return <Navigate state={location.pathname} to={"/login"} replace></Navigate>;
+  return <Navigate state={location.pathname} to={"/"} replace></Navigate>;
 }
 
 export default AdminRoute;

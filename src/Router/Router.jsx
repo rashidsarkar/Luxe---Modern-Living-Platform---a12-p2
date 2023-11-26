@@ -21,6 +21,7 @@ import Makepayment from "../Dashboard/member/Makepayment/Makepayment";
 import PaymentHistory from "../Dashboard/member/PaymentHistory/PaymentHistory";
 import ManageCoupons from "../Dashboard/Admin/ManageCoupons/ManageCoupons";
 import AdminRoute from "../PrivateRoute/AdminRoute";
+import Checkout from "../Dashboard/member/Makepayment/Checkout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +131,11 @@ const router = createBrowserRouter([
       {
         path: "Makepayment",
         element: <Makepayment />,
+      },
+      {
+        path: "checkOutpayment",
+        // element: <Checkout />,
+        element: <Checkout />,
       },
       {
         path: "PaymentHistory",

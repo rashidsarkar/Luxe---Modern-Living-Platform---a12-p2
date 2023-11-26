@@ -19,7 +19,7 @@ function MemberProfile() {
   } = useQuery({
     queryFn: async () => {
       const res = await axiosSecure.get(
-        `/api/user/getUserBasedArgument/${user.email}`
+        `/api/user/getMembersArgument/${user.email}`
       );
       console.log(res.data);
       return res.data;

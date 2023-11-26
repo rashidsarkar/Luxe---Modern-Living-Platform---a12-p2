@@ -9,7 +9,11 @@ function useHandleAcpt() {
   const { mutateAsync: handleAcptApi, error: acptError } = useMutation({
     mutationFn: async (apiInfo) => {
       const { id, email: email2, agreementAcceptDate } = apiInfo || {};
-      const email = { email: email2, agreementAcceptDate: agreementAcceptDate };
+      const email = {
+        email: email2,
+        agreementAcceptDate: agreementAcceptDate,
+        isBooked: true,
+      };
       // console.log(apiInfo);
       // console.log(emailw);
       const res = await axiosSecure.put(

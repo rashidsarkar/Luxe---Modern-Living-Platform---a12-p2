@@ -8,7 +8,9 @@ function useHandleReject() {
 
   const { mutateAsync: handleRejectApi, error: acptError } = useMutation({
     mutationFn: async (id) => {
-      const res = await axiosSecure.put(`/api/admin/handleAcptreq/${id}`);
+      const res = await axiosSecure.put(`/api/admin/handleAcptreq/${id}`, {
+        isBooked: false,
+      });
 
       console.log(res.data);
       return res.data;

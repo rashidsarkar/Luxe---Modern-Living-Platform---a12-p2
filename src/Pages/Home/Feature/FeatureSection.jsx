@@ -50,6 +50,7 @@ function FeatureSection({ room }) {
     image
   ) => {
     // console.log(floorNo, blockName, apartmentNo, userName, userEmail);
+
     const agreementInfo = {
       floorNo,
       blockName,
@@ -60,6 +61,8 @@ function FeatureSection({ room }) {
       Status: "pending",
       agreementRequestDate: formattedDate,
       image,
+      agreementAcceptDate: false,
+      isBooked: false,
     };
 
     try {
