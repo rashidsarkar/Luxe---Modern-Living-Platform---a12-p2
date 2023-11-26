@@ -31,11 +31,12 @@ function UserProfile() {
   });
   if (isLoading) return <CustomLoading />;
   if (isError) return <ErrorMessage error={error} />;
-  console.log(userbasedArgument[0]);
+  // console.log(userbasedArgument[0]);
 
   return (
     <div className="flex flex-col py-20 space-y-4 lg:space-y-0 ">
       {/* User Information */}
+
       <div className="flex items-center justify-center ">
         <UserCard
           imageUrl={user.photoURL}
@@ -43,18 +44,24 @@ function UserProfile() {
           description={user.email}
         ></UserCard>
       </div>
-      <div className="divider py-7">Agreement Information</div>
+      <div className="divider py-7">User Agreement Information</div>
       {/* Agreement Information */}
       <div className="flex-1 border">
         <div className="grid grid-cols-1 gap-5 p-6 bg-white rounded-md shadow-md md:grid-cols-2 ">
-          {userbasedArgument.map((argument) => {
-            return (
-              <AgreementData
-                argument={argument}
-                key={argument._id}
-              ></AgreementData>
-            );
-          })}
+          <div className="flex flex-wrap lg:p-6 lg:space-y-4 lg:flex-col items-center mb-4 space-x-4 border gap-x-3">
+            <div className="rounded-md md:max-w-sm  lg:w-[300px]">
+              <img src="" alt="none" />
+            </div>
+
+            <div className="lg:text-center">
+              <p className="text-gray-500">Floor No: none</p>
+              <p className="text-gray-500">Block: none</p>
+              <p className="text-gray-500">Apartment No: none</p>
+              <p className="text-gray-500">Rent: none</p>
+              <p className="text-gray-500">Req. Date: none</p>
+              <p className="text-gray-500">Agreement Accept Date: none</p>
+            </div>
+          </div>
 
           {/* <p className="text-gray-500">No Agreement Available</p> */}
         </div>

@@ -29,6 +29,8 @@ const RentPaymentPage = () => {
       selectedMonth: selectedMonth?.toLocaleDateString("en-US", {
         month: "long",
       }),
+      agreementAcceptDate: rentData.agreementAcceptDate,
+      agreementRequestDate: rentData.agreementRequestDate,
     };
     // console.log(paymentDatas);
 
