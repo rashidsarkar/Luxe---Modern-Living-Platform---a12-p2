@@ -7,6 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import PaymentHistory from "../../PaymentHistory/PaymentHistory";
 import PaymentFrom from "./PaymentFrom";
 import PaymentWithStripe from "./PaymentWithStripe";
+import Swal from "sweetalert2";
 
 const stripePromise = loadStripe("");
 
@@ -43,6 +44,13 @@ const Checkout = () => {
     } else {
       // Handle case when coupon code is not valid
       // You can show an error message to the user
+      Swal.fire({
+        position: "top-center",
+        icon: "warning",
+        title: "Your Coupon Was Not Valid",
+        showConfirmButton: false,
+        timer: 1000,
+      });
     }
   };
 

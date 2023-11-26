@@ -51,22 +51,6 @@ function NavBar() {
         </NavLink>
       </li>
 
-      {user && (
-        <li>
-          <NavLink
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "pending text-[#021327]"
-                : isActive
-                ? "text-[#503CA1] font-semibold"
-                : ""
-            }
-            to="/about"
-          >
-            About
-          </NavLink>
-        </li>
-      )}
       <li></li>
     </>
   );

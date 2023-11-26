@@ -45,6 +45,7 @@ function UserProfile() {
         ></UserCard>
       </div>
       <div className="divider py-7">User Agreement Information</div>
+
       {/* Agreement Information */}
       <div className="flex-1 border">
         <div className="grid grid-cols-1 gap-5 p-6 bg-white rounded-md shadow-md md:grid-cols-2 ">
