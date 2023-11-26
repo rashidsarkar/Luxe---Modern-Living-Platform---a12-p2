@@ -7,7 +7,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMANT_KEY);
 function PaymentWithStripe({ finalPrice, cartInfo }) {
   return (
     <div className="px-3 md:w-5/12">
-      <p>this is payment </p>
+      <p>Please Pay </p>
       <div>
         <Elements stripe={stripePromise}>
           <StripeForm cartInfo={cartInfo} finalPrice={finalPrice} />

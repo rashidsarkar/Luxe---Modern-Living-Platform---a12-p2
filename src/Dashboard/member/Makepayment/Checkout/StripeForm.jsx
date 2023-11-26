@@ -3,9 +3,13 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosInstanceSecure from "../../../../AxiosAPI/useAxiosInstance";
 import useAuth from "../../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import usePostPaymentData from "../../../../API/MemberAPI/usePostPaymentData";
 
 function StripeForm({ finalPrice, cartInfo }) {
+  const { postPayment } = usePostPaymentData();
   const { user } = useAuth();
+
   const { displayName, photoURL } = user;
   // console.log(displayName, photoURL);
   // console.log(user);
@@ -43,12 +47,14 @@ function StripeForm({ finalPrice, cartInfo }) {
   const elements = useElements();
   const axiosSecure = useAxiosInstanceSecure();
   useEffect(() => {
-    axiosSecure
-      .post("/create-payment-intent", { price: finalPrice })
-      .then((res) => {
-        // console.log("api response", res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
-      });
+    if (finalPrice > 0) {
+      axiosSecure
+        .post("/create-payment-intent", { price: finalPrice })
+        .then((res) => {
+          // console.log("api response", res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+        });
+    }
   }, [axiosSecure, finalPrice]);
 
   const handleSubmit = async (event) => {
@@ -91,6 +97,30 @@ function StripeForm({ finalPrice, cartInfo }) {
       if (paymentIntent.status === "succeeded") {
         console.log("transactionID", paymentIntent.id);
         setTransactionId(paymentIntent.id);
+        // now save payment db
+        const payment = {
+          userName: displayName,
+          userEmail: email,
+          userImage: photoURL,
+          agreementAcceptDate: agreementAcceptDate,
+          agreementRequestDate: agreementRequestDate,
+          floor: floor,
+          blockName: blockName,
+          apartmentNo: apartmentNo,
+          payForMunth: selectedMonth,
+          billPrice: finalPrice,
+          transactionId: paymentIntent.id,
+        };
+        await postPayment(payment);
+        // const res = await axiosSecure.post("/payments", payment);
+        // if (res.data.insertedId) {
+        //   Swal.fire({
+        //     title: "Payment Success",
+        //     text: "Thank you for your payment. Your transaction has been successfully processed.",
+        //     icon: "success",
+        //   });
+        // }
+        // console.log("payment saved", res);
       }
     }
   };

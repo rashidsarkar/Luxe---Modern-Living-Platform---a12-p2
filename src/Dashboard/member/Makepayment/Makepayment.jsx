@@ -4,7 +4,7 @@ import RentPaymentPage from "./RentPaymentPage/RentPaymentPage";
 function Makepayment() {
   return (
     <div>
-      Makepayment
+      Make Payment
       <RentPaymentPage />
       {/* <Checkout /> */}
     </div>
