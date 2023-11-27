@@ -5,7 +5,7 @@ import useAxiosInstanceSecure from "../AxiosAPI/useAxiosInstance";
 function useRole() {
   const { user, loading } = useAuthProvider();
   const axiosInstanceSecure = useAxiosInstanceSecure();
-
+  const token = localStorage.getItem("access-token");
   const {
     data: userRole,
     isLoading,
@@ -14,12 +14,12 @@ function useRole() {
   } = useQuery({
     queryFn: async () => {
       const res = await axiosInstanceSecure.get(
-        `/api/user/userRole/${user.email}`
+        `/api/user/userRole/${user?.email}`
       );
       // console.log(res.data)
       return res.data.userRole;
     },
-    enabled: !loading,
+    enabled: !!user?.email && !!token,
     queryKey: [user?.email, "userRole"],
   });
   return { userRole, isLoading, isError, error };
