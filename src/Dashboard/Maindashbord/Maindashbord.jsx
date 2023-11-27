@@ -10,6 +10,7 @@ import CustomLoading from "../../Components/CustomLoading";
 import { GiPayMoney } from "react-icons/gi";
 import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
 import { RiCoupon2Fill } from "react-icons/ri";
+import { Helmet } from "react-helmet-async";
 function MainDashboard() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -294,6 +295,9 @@ function MainDashboard() {
           <div className="flex flex-col items-start justify-between pb-6 space-y-4 border-b lg:items-center lg:space-y-0 lg:flex-row">
             <h1 className="text-2xl font-semibold text-center capitalize whitespace-nowrap">
               {userRole} Dashboard
+              <Helmet>
+                <title>Luxe | Dashboard</title>
+              </Helmet>
             </h1>
             {/* Add more content or components here */}
           </div>

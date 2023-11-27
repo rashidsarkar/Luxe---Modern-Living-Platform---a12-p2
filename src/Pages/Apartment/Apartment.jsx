@@ -9,6 +9,7 @@ import SectionTitle from "../../TextEffectComponents/BannerDecpt/SectionTitle/Se
 import useAuth from "../../hooks/useAuth";
 import FeatureSection from "../Home/Feature/FeatureSection";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 function Apartment() {
   const { user } = useAuth();
@@ -53,6 +54,9 @@ function Apartment() {
 
   return (
     <div>
+      <Helmet>
+        <title>Luxe | Apartment</title>
+      </Helmet>
       <ApartmentBanar
         image="https://i.ibb.co/HCDxqkm/pexels-vecislavas-popa-813692.jpg"
         title="Luxurious Apartments"
