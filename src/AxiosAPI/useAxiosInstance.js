@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
 const axiosInstanceSecure = axios.create({
-  baseURL: "http://localhost:5000", // Your API base URL
+  baseURL: "https://server-livid-eight.vercel.app", // Your API base URL
   // baseURL: "http://localhost:5000", //> Your API base URL
 });
 

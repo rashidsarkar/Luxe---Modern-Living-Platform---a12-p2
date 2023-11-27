@@ -19,10 +19,22 @@
   position: relative;
   width: 60%;
   height: 100%;
-  transform: translateY(-150px);
+  /* transform: translateY(-150px); */
   margin: 0 auto;
 
   /* z-index: 99; */
+}
+
+/* Default styles for larger devices */
+.imgbox {
+  transform: translateY(-150px);
+}
+
+/* Media query for small devices */
+@media only screen and (max-width: 768px) {
+  .imgbox {
+    transform: translateY(-73px);
+  }
 }
 
 img {
