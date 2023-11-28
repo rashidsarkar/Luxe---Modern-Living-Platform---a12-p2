@@ -12,14 +12,7 @@ function usePostPaymentData() {
     mutationFn: async (paymentInfo) => {
       const res = await axiosSecure.post(`/payments`, paymentInfo);
       console.log(res.data);
-      if (res.data.insertedId) {
-        Swal.fire({
-          title: "Payment Success",
-          text: "Thank you for your payment. Your transaction has been successfully processed.",
-          icon: "success",
-        });
-        navigate("/dashboard/PaymentHistory");
-      }
+
       return res.data;
     },
     onError: () => {
@@ -27,6 +20,12 @@ function usePostPaymentData() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["paymentData"]);
+      Swal.fire({
+        title: "Payment Success",
+        text: "Thank you for your payment. Your transaction has been successfully processed.",
+        icon: "success",
+      });
+      navigate("/dashboard/PaymentHistory");
     },
   });
   return { postPayment };

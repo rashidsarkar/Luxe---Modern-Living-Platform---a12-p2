@@ -43,14 +43,17 @@ function AuthProvider({ children }) {
       if (currentUser) {
         //crete
         const userInfo = { email: currentUser.email };
+        console.log("TOKEN WILL BE SET SOON");
         axiosInstancePublic.post("/jwt", userInfo).then((res) => {
           if (res.data.token) {
             localStorage.setItem("access-token", res.data.token);
+            console.log("TOKEN SET ON APPLICATION");
             setLoading(false);
           }
         });
       } else {
         //do some thiks
+        console.log("TOKEN REMOVED");
         localStorage.removeItem("access-token");
         setLoading(false);
       }

@@ -31,13 +31,16 @@ function SignUp() {
     } else {
       singupWithEmalPass(email, password)
         .then((currentUser) => {
+          console.log(currentUser);
           updateProfiles(name, image)
             .then(() => {
               const userInfo = { name, email };
+
               axiosInstancePublic
                 .post("/api/createUser", userInfo)
                 .then((res) => {
-                  if (res.data.insertedId) {
+                  console.log(res);
+                  if (res.status == 200) {
                     console.log("user added db");
                     swal("Success", "Signup successful!", "success");
                     navigat(preveLocation?.state || "/");

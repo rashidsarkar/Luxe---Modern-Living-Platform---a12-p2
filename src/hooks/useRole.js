@@ -19,7 +19,7 @@ function useRole() {
       // console.log(res.data)
       return res.data.userRole;
     },
-    enabled: !!user?.email && !!token,
+    enabled: !!user?.email && !!token && !loading,
     queryKey: [user?.email, "userRole"],
   });
   return { userRole, isLoading, isError, error };
