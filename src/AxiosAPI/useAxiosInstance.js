@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth";
 
 const axiosInstanceSecure = axios.create({
   // baseURL: "https://server-livid-eight.vercel.app", // Your API base URL
-  baseURL: "http://localhost:5000", //> Your API base URL
+  baseURL: "https://ass-12-v2.vercel.app", //> Your API base URL
 });
 
 function useAxiosInstanceSecure() {
