@@ -70,7 +70,7 @@ function AboutBuilding() {
                     // If you need to, you can tweak the effect transition using the wrapper style.
                     style: { transitionDelay: "1s" },
                   }}
-                  src="https://i.ibb.co/bW5nJ82/pexels-tirachard-kumtanom-347141.jpg"
+                  src="https://i.ibb.co/x1nrXc1/ed629a50dae45ff0ac41f4bc578f34f5.jpg"
                 />
               </div>
             </div>
