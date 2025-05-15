@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to Luxe, your premier destination for modern living. Luxe offers a sophisticated platform to enhance your living experience, providing a seamless blend of luxury and convenience.
+Welcome to Luxe, your premier destination for modern living. Luxe offers a sophisticated platform to enhance your living experience, providing a seamless blend of luxury and convenience...
 
 Visit the live site: [Luxe Website](https://stellar-malasada-952ea2.netlify.app)
 
